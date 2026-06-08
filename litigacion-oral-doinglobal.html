@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Litigación Oral Interactiva — doinGlobal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --dg-dark:#262626;
+    --dg-green:#99CC06;
+    --dg-gray:#595959;
+    --dg-light:#f5f5f5;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Poppins',sans-serif;
+    background:#fff;
+    color:var(--dg-dark);
+    min-height:100vh;
+    line-height:1.5;
+  }
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:24px 48px;
+    border-bottom:3px solid var(--dg-green);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  header img{height:56px;width:auto}
+  header h1{
+    font-size:1.25rem;
+    font-weight:600;
+    color:var(--dg-dark);
+    letter-spacing:.3px;
+  }
+  header h1 span{color:var(--dg-green)}
+  main{
+    max-width:1200px;
+    margin:0 auto;
+    padding:40px 32px 64px;
+  }
+  .section-title{
+    font-size:.85rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    color:var(--dg-gray);
+    margin-bottom:16px;
+  }
+  .cases{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-bottom:40px;
+  }
+  .case-card{
+    background:#fff;
+    border:2px solid #e5e5e5;
+    border-radius:12px;
+    padding:24px;
+    cursor:pointer;
+    transition:all .25s ease;
+    text-align:left;
+    font-family:inherit;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .case-card:hover{
+    border-color:var(--dg-green);
+    transform:translateY(-2px);
+    box-shadow:0 6px 20px rgba(0,0,0,.06);
+  }
+  .case-card.active{
+    border-color:var(--dg-green);
+    background:#fafff0;
+    box-shadow:0 4px 16px rgba(153,204,6,.18);
+  }
+  .case-level{
+    font-size:.7rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    color:var(--dg-green);
+  }
+  .case-title{
+    font-size:1.15rem;
+    font-weight:600;
+    color:var(--dg-dark);
+  }
+  .case-difficulty{
+    display:flex;
+    gap:4px;
+    margin-top:auto;
+    padding-top:8px;
+  }
+  .dot{
+    width:10px;height:10px;border-radius:50%;
+    background:#e5e5e5;
+  }
+  .dot.filled{background:var(--dg-green)}
+
+  .avatar-area{
+    background:var(--dg-light);
+    border-radius:16px;
+    min-height:520px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    position:relative;
+  }
+  .placeholder{
+    text-align:center;
+    color:var(--dg-gray);
+  }
+  .placeholder-icon{
+    width:64px;height:64px;
+    border-radius:50%;
+    background:var(--dg-green);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;font-weight:700;
+    margin:0 auto 16px;
+  }
+  .placeholder p{font-size:1rem;font-weight:500}
+  .placeholder small{display:block;margin-top:8px;font-size:.85rem;color:#999}
+
+  .avatar-wrapper{
+    width:100%;
+    max-width:340px;
+    aspect-ratio:9/16;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 8px 32px rgba(0,0,0,.12);
+    background:#000;
+  }
+  .avatar-wrapper iframe{
+    width:100%;
+    height:100%;
+    border:0;
+    display:block;
+  }
+  .active-case-label{
+    position:absolute;
+    top:20px;
+    left:24px;
+    background:#fff;
+    padding:8px 16px;
+    border-radius:20px;
+    font-size:.8rem;
+    font-weight:500;
+    color:var(--dg-dark);
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+  }
+  .active-case-label strong{color:var(--dg-green);font-weight:600}
+
+  footer{
+    text-align:center;
+    padding:24px;
+    font-size:.8rem;
+    color:var(--dg-gray);
+    border-top:1px solid #eee;
+  }
+  footer span{color:var(--dg-green);font-weight:600}
+
+  @media (max-width:768px){
+    header{padding:16px 24px}
+    header img{height:44px}
+    header h1{font-size:1rem}
+    main{padding:24px 16px 40px}
+    .cases{grid-template-columns:1fr;gap:12px}
+    .avatar-area{min-height:auto;padding:16px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="https://info.doinglobal.com/hs-fs/hubfs/AREA%20COMERCIAL/-%20SISTEMAS%20INTEGRADOS/SIGA_MAT/IMG_PRODUCTOS/LOGOS/DG-LOGO-NEW-2020-_TM-Black.png?width=323&height=182&name=DG-LOGO-NEW-2020-_TM-Black.png" alt="doinGlobal">
+  <h1>Litigación Oral <span>Interactiva</span></h1>
+</header>
+
+<main>
+  <div class="section-title">Seleccioná un caso</div>
+  <div class="cases" id="cases">
+    <button class="case-card" data-case="0">
+      <span class="case-level">Inicial</span>
+      <span class="case-title">Robo</span>
+      <div class="case-difficulty">
+        <span class="dot filled"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+    </button>
+    <button class="case-card" data-case="1">
+      <span class="case-level">Intermedio</span>
+      <span class="case-title">Mala Praxis</span>
+      <div class="case-difficulty">
+        <span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span>
+      </div>
+    </button>
+    <button class="case-card" data-case="2">
+      <span class="case-level">Avanzado</span>
+      <span class="case-title">Fraude</span>
+      <div class="case-difficulty">
+        <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
+      </div>
+    </button>
+  </div>
+
+  <div class="avatar-area" id="avatarArea">
+    <div class="placeholder" id="placeholder">
+      <div class="placeholder-icon">▶</div>
+      <p>Seleccioná un caso para comenzar</p>
+      <small>Se requerirá acceso al micrófono</small>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © doinGlobal — Práctica de litigación oral con avatar interactivo. Asegurate de permitir el acceso al <span>micrófono</span> cuando lo solicite el navegador.
+</footer>
+
+<script>
+  const cases = [
+    { url: 'https://embed.liveavatar.com/v1/bda80dd9-bc17-4c76-948e-6afa28af6819?orientation=vertical', level: 'Inicial', title: 'Robo' },
+    { url: 'https://embed.liveavatar.com/v1/27901129-00b8-489f-9d45-dc131e2c9eb5?orientation=vertical', level: 'Intermedio', title: 'Mala Praxis' },
+    { url: 'https://embed.liveavatar.com/v1/854536b0-de75-4de6-912e-fd23a8a51302?orientation=vertical', level: 'Avanzado', title: 'Fraude' }
+  ];
+
+  const cards = document.querySelectorAll('.case-card');
+  const avatarArea = document.getElementById('avatarArea');
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const idx = parseInt(card.dataset.case);
+      cards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      loadAvatar(idx);
+    });
+  });
+
+  function loadAvatar(idx){
+    const c = cases[idx];
+    avatarArea.innerHTML = `
+      <div class="active-case-label"><strong>${c.level}</strong> · ${c.title}</div>
+      <div class="avatar-wrapper">
+        <iframe src="${c.url}" allow="microphone" title="LiveAvatar — ${c.title}"></iframe>
+      </div>
+    `;
+  }
+</script>
+
+</body>
+</html>
